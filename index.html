@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura do Infográfico - CFP</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .infographic-container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            border: 4px solid #003366;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Seções que receberão o botão de áudio ganham posição relativa */
+        .audio-section {
+            position: relative;
+        }
+
+        /* Botão de play/pause */
+        .audio-play-btn {
+            position: absolute;
+          
+            bottom: -12px;
+            right: -12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #003366;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            font-size: 18px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s, transform 0.2s;
+            padding: 0;
+            outline: none;
+        }
+
+        .audio-play-btn:hover {
+            background: #0055a5;
+            transform: scale(1.1);
+        }
+
+        .audio-play-btn:active {
+            transform: scale(0.95);
+        }
+
+        .audio-play-btn.playing {
+            background: #d32f2f; /* tom de destaque quando está tocando */
+        }
+
+        /* Ajustes para os blocos que já tinham borda */
+        .model-transition-container,
+        .main-column,
+        .credits-box {
+            border: 2px solid #003366;
+            background-color: #ffffff;
+        }
+
+        .model-transition-container {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            min-height: 180px;
+        }
+
+        .columns-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .main-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-header {
+            background-color: #003366;
+            width: 90%;
+            margin: 0 auto;
+            border-radius: 0 0 12px 12px;
+            color: #ffffff;
+            font-family: 'Segoe UI', 'Roboto', 'Poppins', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 4vw, 1.2rem);
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            line-height: 1.3;
+            min-height: 55px;
+        }
+
+        .column-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-grow: 1;
+        }
+
+        .footer-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .credits-box {
+            width: 40%;
+            min-height: 90px;
+            background-color: #f8fafc;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 900px) {
+            .columns-grid {
+                grid-template-columns: 1fr;
+            }
+            .credits-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic-container">
+        <!-- Título – data-audio-src deve ser preenchido com o caminho do áudio -->
+        <header class="model-transition-container audio-section" data-audio-src="audios/titulo.ogg">
+            <img src="imgs/titulo.jpeg" alt="Título do infográfico">
+        </header>
+
+        <!-- Introdução -->
+        <section class="model-transition-container audio-section" data-audio-src="audios/introducao.ogg">
+            <img src="imgs/introducao.jpeg" alt="Introdução">
+        </section>
+
+        <!-- Colunas principais -->
+        <main class="columns-grid">
+            <div class="main-column audio-section" data-audio-src="audios/bloco_1_linha_3.ogg">
+                <div class="column-header">PRINCÍPIOS DA PRÁTICA PROFISSIONAL</div>
+                <div class="column-body">
+                    <img src="imgs/bloco_1_linha_3.png" alt="Princípios">
+                </div>
+            </div>
+            <div class="main-column audio-section" data-audio-src="audios/bloco_2_linha_3.ogg">
+                <div class="column-header">AVALIAÇÃO PSICOLÓGICA ACESSÍVEL</div>
+                <div class="column-body">
+                    <img src="imgs/bloco_2_linha_3.png" alt="Avaliação Psicológica">
+                </div>
+            </div>
+            <div class="main-column audio-section" data-audio-src="audios/bloco_3_linha_3.ogg">
+                <div class="column-header">TECNOLOGIA (TDICs) E ESPAÇO FÍSICO</div>
+                <div class="column-body">
+                    <img src="imgs/bloco_3_linha_3.png" alt="Tecnologia e espaço físico">
+                </div>
+            </div>
+        </main>
+
+        <!-- Rodapé / Créditos -->
+        <footer class="footer-section audio-section" data-audio-src="audios/creditos.ogg">
+            <div class="credits-box">
+                <img src="imgs/creditos.png" alt="Créditos e descrição">
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // Mapa para guardar os objetos Audio e o estado de cada seção
+            const audioElements = new Map();
+            let currentlyPlaying = null; // Elemento que está tocando no momento
+
+            // Busca todas as seções com a classe .audio-section
+            const sections = document.querySelectorAll('.audio-section');
+
+            sections.forEach(section => {
+                // Cria o botão de play
+                const button = document.createElement('button');
+                button.className = 'audio-play-btn';
+                button.innerHTML = '▶'; // play
+                button.setAttribute('aria-label', 'Ouvir descrição em áudio');
+                button.title = 'Ouvir descrição em áudio';
+
+                // Insere o botão na seção
+                section.appendChild(button);
+
+                // Evento de clique
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation(); // evita conflitos com cliques na imagem
+
+                    const audioSrc = section.getAttribute('data-audio-src');
+                    if (!audioSrc) {
+                        alert('Áudio ainda não configurado para esta seção. Adicione o caminho no atributo data-audio-src.');
+                        return;
+                    }
+
+                    // Se já existe um áudio tocando e é este mesmo, pausa
+                    if (currentlyPlaying === section) {
+                        const audio = audioElements.get(section);
+                        if (audio && !audio.paused) {
+                            audio.pause();
+                            setPlayIcon(button);
+                            currentlyPlaying = null;
+                            return;
+                        }
+                    }
+
+                    // Pausa qualquer outro áudio que esteja tocando
+                    if (currentlyPlaying && currentlyPlaying !== section) {
+                        const prevAudio = audioElements.get(currentlyPlaying);
+                        if (prevAudio) {
+                            prevAudio.pause();
+                            prevAudio.currentTime = 0;
+                        }
+                        const prevButton = currentlyPlaying.querySelector('.audio-play-btn');
+                        if (prevButton) setPlayIcon(prevButton);
+                    }
+
+                    // Cria ou recupera o objeto Audio para esta seção
+                    let audio = audioElements.get(section);
+                    if (!audio) {
+                        audio = new Audio(audioSrc);
+                        audioElements.set(section, audio);
+
+                        // Quando o áudio terminar, restaurar o botão
+                        audio.addEventListener('ended', () => {
+                            setPlayIcon(button);
+                            currentlyPlaying = null;
+                        });
+
+                        // Em caso de erro, avisa e restaura
+                        audio.addEventListener('error', () => {
+                            alert('Erro ao carregar o áudio. Verifique o caminho.');
+                            setPlayIcon(button);
+                            currentlyPlaying = null;
+                        });
+                    } else {
+                        // Se já existia, mas está pausado, reinicia do começo
+                        audio.currentTime = 0;
+                    }
+
+                    // Toca o áudio
+                    audio.play().then(() => {
+                        setPauseIcon(button);
+                        currentlyPlaying = section;
+                    }).catch(err => {
+                        console.error('Falha ao reproduzir áudio:', err);
+                        alert('Não foi possível reproduzir o áudio.');
+                    });
+                });
+            });
+
+            function setPlayIcon(btn) {
+                btn.innerHTML = '▶';
+                btn.classList.remove('playing');
+                btn.title = 'Ouvir descrição em áudio';
+            }
+
+            function setPauseIcon(btn) {
+                btn.innerHTML = '⏸';
+                btn.classList.add('playing');
+                btn.title = 'Pausar áudio';
+            }
+        })();
+    </script>
+</body>
+</html>
