@@ -44,8 +44,8 @@
           
             bottom: -12px;
             right: -12px;
-            width: 36px;
-            height: 36px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             background: #003366;
             color: #ffffff;
@@ -150,6 +150,13 @@
             object-fit: cover;
         }
 
+        picture, picture img {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         @media (max-width: 900px) {
             .columns-grid {
                 grid-template-columns: 1fr;
@@ -163,13 +170,26 @@
 <body>
     <div class="infographic-container">
         <!-- Título – data-audio-src deve ser preenchido com o caminho do áudio -->
+        <!-- Título – imagem larga em paisagem, 1:1 em retrato -->
         <header class="model-transition-container audio-section" data-audio-src="audios/titulo.ogg">
-            <img src="imgs/titulo.jpeg" alt="Título do infográfico">
+            <picture>
+                <!-- Imagem quadrada para retrato (substitua # pelo caminho real) -->
+                <source media="(max-width: 900px)" srcset="imgs/titulo_1-1.png">
+                <!-- Imagem larga padrão para paisagem -->
+                <source media="(min-width: 901px)" srcset="imgs/titulo.jpeg">
+                <!-- Fallback para navegadores sem suporte a <picture> -->
+                <img src="imgs/titulo.jpeg" alt="Título do infográfico">
+            </picture>
         </header>
 
-        <!-- Introdução -->
+        <!-- Introdução – mesma lógica -->
         <section class="model-transition-container audio-section" data-audio-src="audios/introducao.ogg">
-            <img src="imgs/introducao.jpeg" alt="Introdução">
+            <picture>
+                <source media="(max-width: 900px)" srcset="imgs/introducao_1-1.png">
+                <source media="(min-width: 901px)" srcset="imgs/introducao.jpeg">
+                <img src="imgs/introducao.jpeg" alt="Introdução">
+            </picture>
+        </section>
         </section>
 
         <!-- Colunas principais -->
