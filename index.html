@@ -82,6 +82,8 @@
         .credits-box {
             border: 2px solid #003366;
             background-color: #ffffff;
+            padding: 5px;
+            margin: 5px;
         }
 
         .model-transition-container {
@@ -139,8 +141,6 @@
         }
 
         .credits-box {
-            width: 40%;
-            min-height: 90px;
             background-color: #f8fafc;
         }
 
@@ -176,9 +176,9 @@
                 <!-- Imagem quadrada para retrato (substitua # pelo caminho real) -->
                 <source media="(max-width: 900px)" srcset="imgs/titulo_1-1.png">
                 <!-- Imagem larga padrão para paisagem -->
-                <source media="(min-width: 901px)" srcset="imgs/titulo.jpeg">
+                <source media="(min-width: 901px)" srcset="imgs/titulo.png">
                 <!-- Fallback para navegadores sem suporte a <picture> -->
-                <img src="imgs/titulo.jpeg" alt="Título do infográfico">
+                <img src="imgs/titulo.png" alt="Título do infográfico">
             </picture>
         </header>
 
@@ -215,11 +215,22 @@
         </main>
 
         <!-- Rodapé / Créditos -->
+        <main class="columns-grid">
+
+        <div></div>
+            
         <footer class="footer-section audio-section" data-audio-src="audios/creditos.ogg">
             <div class="credits-box">
                 <img src="imgs/creditos.png" alt="Créditos e descrição">
             </div>
         </footer>
+
+        <footer class="footer-section audio-section" data-audio-src="audios/creditos.ogg">
+            <div class="credits-box">
+                <img src="imgs/referencia.png" alt="Créditos e descrição">
+            </div>
+            </main>
+        </footer>        
     </div>
 
     <script>
